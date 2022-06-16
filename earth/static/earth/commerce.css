@@ -1,0 +1,49 @@
+.navbar{
+    box-shadow: 1px 1px 10px gray
+}
+
+.navbar-brand{
+    color: rgb(7, 185, 7);
+    font-weight: 700;
+    font-size: 1.5rem
+}
+
+#commercebackground{
+    background: url('./images/annie-spratt-cVEOh_JJmEE-unsplash.jpg');
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover
+}
+
+#product_detail{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+#product_img img{
+    height: 100%;
+}
+
+#headbg{
+    background: rgb(7, 185, 7);
+}
+
+@media (max-width:767px){
+
+    #product-card{
+        width: 80%;
+        margin: auto
+    }
+
+    .navbrand{
+        color: rgb(7, 185, 7);
+        font-weight: 700;
+        font-size: 1.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}

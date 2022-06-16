@@ -1,0 +1,53 @@
+{% extends 'earth/auth.html' %}
+
+{% block body %}
+
+
+    <div id="register_container">
+                <div class="top">
+                    <h1>Sign Up</h1>
+                </div>
+                <hr>
+                <div class="register_body">
+                    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+                        {% for message in  messages %}
+                            <div style="width: 100%; margin: 0 auto;border-radius:15px;margin-bottom: 0.7em" class="alert alert-danger alert-dismissible fade show" role="alert"> {{message}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                            </div>
+                        {% endfor %}
+                        {% csrf_token %}
+
+                        <div id="form1" class="formgroup" class="form-group">
+                            <input id="left" type="text" name="firstname" placeholder="FirstName">
+                            <input id="right" type="text" name="lastname" placeholder="LastName">
+                        </div>
+
+                        <div class="formgroup"class="form-group">
+                            <input  type="email" name="email" placeholder="Email">
+                        </div>
+
+                        <div id="form2"  class="formgroup"class="form-group">
+                            <input type="password" name="password" placeholder="Password">
+                            <input  type="password" name="password2" placeholder="Confirm Password">
+                        </div>
+
+                        <div class="formgroup"class="form-group">
+                            <input id="left" name="usertype" list="usertype" placeholder="User Type">
+                                <datalist id="usertype">
+                                    <option value="Donor">
+                                    <option value="Donee">
+                                </datalist>
+                        </div>
+
+                        <div id="regbutton" class="form-group">
+                            <input  type="submit" value="Register">
+                        </div>
+                        
+                    </form>
+                    <div class="register_foot">
+                        <p>Already have an account <a href="{% url 'login' %}">sign in</a></p>
+                    </div>
+                </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,397 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.navbar{
+    background: white;
+    padding: 0.75em 2em
+}
+
+.navbrand{
+    color: #07b907;
+    font-size: 2.3rem;
+    font-weight: bold;
+    letter-spacing: 0.4em;
+}
+
+.navitem .navlink{
+    color: black;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-transform: capitalize;
+    font-weight: 400
+}
+
+#btn1{
+    background: rgb(7, 185, 7);
+    color: white;
+    border: none;
+    transition: all 0.3s ease-in;
+    padding: 0.5em 1.5em
+}
+
+#btn1 a{
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in;
+}
+
+#btn1 a:hover{
+    color: rgb(7, 185, 7)
+}
+
+#btn1:hover a{
+    color: rgb(7, 185, 7)
+}
+
+#btn1:hover{
+    border: 1px solid rgb(7, 185, 7);
+    background: white;
+    color: rgb(7, 185, 7)
+
+}
+
+#index{
+    background: url('./images/larm-rmah-AEaTUnvneik-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 87vh;
+    padding-top: 8em
+}
+
+#index h1{
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+
+.btn1{
+    height: 45px;
+    width: 35%;
+    border: none;
+    outline: none;
+    background-color: rgb(8, 185, 8);
+    color: white;
+    font-weight: 700;
+    border-radius: 60px
+}
+
+.btn1 a{
+    color: white;
+    text-decoration: none
+}
+
+
+.fundraise h1{
+    font-weight: 700
+}
+
+#request_col .inner{
+    width: 85%;
+    margin: 0 auto;
+    padding-bottom: 0.3em
+}
+
+#request_col .inner img{
+    width: 100%;
+    height: 250px;
+}
+
+#request_col .inner #title{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+#request_col .inner #username{
+    padding: 0;
+    margin: 0;
+    color: rgb(7, 185, 7);
+    font-weight: 300;
+    font-size: 0.9rem
+}
+
+#request_col .inner #goal{
+    padding: 0;
+    margin: 0;
+    font-weight: 700
+}
+
+#request_col .inner #goal span{
+    font-weight: 500;
+    color: rgba(0, 0, 0,0.4);
+    font-size: 0.9rem
+}
+
+#request_col .inner #donation{
+    padding: 0;
+    margin: 0;
+    font-weight: 700
+}
+
+#request_col .inner #donation span{
+    font-weight: 500;
+    color: rgba(0, 0, 0,0.4);
+    font-size: 0.9rem
+}
+
+#request_col .inner p a{
+    color: rgb(7, 185, 7);
+    padding-right: 1em;
+    text-decoration: none
+}
+
+#numbers{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 0em;
+    grid-column-gap: 4em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 6em;
+    padding-bottom: 6em
+}
+
+#numbers h1{
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+#number1{
+    justify-self: flex-start;
+}
+
+#number2{
+    justify-self: flex-end;
+}
+
+/* footer */
+
+footer{
+    background: #003100;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3em;
+    padding-bottom: 1.5em;
+    margin-bottom: -1em;
+    padding-top: 4em;
+    padding-left: 4em;
+    padding-right: 4em;
+    margin-bottom: -3em;
+}
+
+footer .left .top h1{
+    font-weight: bold;
+    font-size: 2.8rem;
+}
+
+footer .left .top p{
+    width: 55%
+}
+
+footer .left .small1{
+    display: flex
+}
+
+footer .left .small2{
+    display: flex
+}
+
+footer .left .small1 img, footer .left .small2 img{
+    height: 20px;
+}
+footer .left .small1 p, footer .left .small2 p{
+    margin-left: 1em
+}
+
+footer .left .small1 p a, footer .left .small2 p a{
+    color: white;
+    text-decoration: navajowhite
+}
+
+footer .right h1{
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+footer .right p{
+    width: 65%
+}
+
+footer .right .small form input{
+    border: none
+}
+
+footer .right .small form input[type="text"]{
+    width: 50%;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 1em;
+    border: 1px solid #07b907;
+    outline: none
+}
+
+footer .right .small form input[type="submit"]{
+    background: #07b907;
+    color: white;
+    height: 50px;
+    border-radius: 5px;
+    width: 25%;
+    margin-left: 3em;
+    transition: all 0.3s ease-in
+}
+
+footer .right .small form input[type="submit"]:hover{
+    background: white;
+    color: #07b907;
+    border: 1px solid #07b907
+}
+
+
+
+@media (max-width:767px){
+    .navbar{
+        padding: 0.75em
+    }
+
+    #index h1{
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+        text-align: center
+    }
+
+    #index{
+        height: 90vh;
+        padding-top: 0em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+
+    #title{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center
+    }
+
+    #numbers{
+        width:100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 6em;
+        margin-top: 4em;
+        padding: 0;
+        padding-top: 4em;
+        padding-bottom: 4em
+    }
+    
+    #numbers h1{
+        font-size: 6rem;
+        font-weight: bold;
+
+    }
+
+    #number1{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column
+    }
+
+    #number2{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column
+    }
+
+    footer{
+        grid-template-columns: 1fr;
+        padding-left: 0em;
+        padding-right: 0em;
+        grid-row-gap: 4em
+    }
+
+    footer .left{
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    footer .left .top p{
+        width: 100%;
+        margin-top: 1em
+    }
+
+    footer .left .small1{
+        margin-top: 1.4em;
+    }
+
+    footer .right{
+        width: 90%;
+        margin: 0 auto;
+        grid-row: 1;
+    }
+
+    footer .right p{
+        width: 100%;
+        margin-top: 1em
+    }
+
+    footer .right .small form input[type="text"]{
+        width: 100%;
+        margin-top: 1em
+    }
+
+    footer .right .small form input[type="submit"]{
+        width: 40%;
+        margin-top: 1em
+    }
+
+    footer .right span{
+        display: flex;
+        justify-content: flex-end
+    }
+    .navbrand{
+        color: #07b907;
+        font-size: 2rem;
+        font-weight: bold;
+        letter-spacing: 0.2em;
+    }
+
+
+    
+}
+
+
+
+@media (max-width:550px){
+    #request_col .inner{
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 0.3em
+    }
+
+    .navbar{
+        padding-left: 0;
+        padding-right: 0
+    }
+}
+
+
+
+
+
+
+

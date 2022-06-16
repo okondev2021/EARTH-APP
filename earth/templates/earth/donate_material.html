@@ -1,0 +1,34 @@
+{% extends 'earth/earthapplayout.html' %}
+
+{% block body %}
+<div class="donatebody">
+    <main id="donatematerial" class="p-4 ">
+        <form action="{% url 'donate_material' benefactor_name.id %}" method="POST" enctype="multipart/form-data">
+                {% for message in  messages %}
+                    <div style="width: 100%; margin: 0 auto;border-radius:15px;margin-bottom: 0.7em" class="alert alert-danger alert-dismissible fade show" role="alert"> {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>
+                {% endfor %}
+                    {% csrf_token %}
+                    <div class=" mb-3 form-group">
+                        <input class="form-control" type="text" name="title" placeholder="Product Name">
+                    </div>
+                    <div class=" mb-3 form-group">
+                        <textarea class="form-control" name="description" cols="30" rows="10" placeholder="Product Description"></textarea>
+                    </div>
+                    <div class=" mb-3 form-group">
+                        <label class="form-label" for="itemimage">Upload image of item</label>
+                        <input class="form-control" type="file" name="itemimage" id="itemimage">
+                    </div>
+                    <div class=" mb-3 form-group">
+                        <input class="form-control" type="number" name="amount" placeholder="Amount">
+                    </div>
+                   <div class="form-group">
+                        <input id="donate_submit"  class=" form-control"  type="submit" value="ADD">
+                   </div>
+        </form>
+    </main>
+</div>
+{% endblock %}
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex officia, animi voluptatibus incidunt magnam distinctio sunt laboriosam impedit? Doloremque impedit exercitationem voluptatem id, modi distinctio quisquam nisi mollitia facilis necessitatibus!

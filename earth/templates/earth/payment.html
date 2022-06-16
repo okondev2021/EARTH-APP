@@ -1,0 +1,59 @@
+{% extends 'earth/earthapplayout.html' %}
+
+{% block body %}
+
+<main id="payment">
+        <div id="contain" class=" container">
+                <p class="h8 ">Payment Details</p> 
+                {% for message in  messages %}
+                <div style="width: 100%; margin: 0 auto;border-radius:15px;margin-bottom: 0.7em" class="alert alert-danger alert-dismissible fade show" role="alert"> {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+                {% endfor %}
+                <form action="{% url 'payment' userrequest_pay.id %}" method="POST" id="row" class=" m-0 p-0 row gx-3">
+                    {% csrf_token %}
+                    <div class=" m-0 p-0 col-12">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 p-0 mb-1 text">Person Name</p>
+                            <input disabled type="text" class="form-control mb-3" placeholder="{{request.user.first_name}} {{request.user.last_name}}">
+                        </div>
+                    </div>
+
+                    <div class="m-0 p-0 pe-2 col-6">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 p-0 mb-1 text">Card Number</p>
+                            <input type="number" class="form-control mb-3" placeholder="1234 5678 435678">
+                        </div>
+                    </div>
+
+                    <div class="m-0 p-0 ps-2 col-6">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 p-0 mb-1 text">Amount</p>
+                            <input type="number" class="form-control mb-3" name="amount" placeholder="Amount">
+                        </div>
+                    </div>
+
+                    <div  class="m-0 p-0 pe-2 col-6">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 p-0 mb-1 text">Expiry</p>
+                            <input type="date" class="form-control mb-3">
+                        </div>
+                    </div>
+
+                    <div class="m-0 p-0 ps-2  col-6">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 p-0 mb-1 text">CVV/CVC</p>
+                            <input type="password" class="form-control mb-3">
+                        </div>
+                    </div>
+
+                    <div class="m-0 p-0 col-12">
+                        <div>                               
+                            <input type="submit" value="Pay">
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </main>
+
+{% endblock %}

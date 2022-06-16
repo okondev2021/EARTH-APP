@@ -1,0 +1,74 @@
+{% extends 'earth/earthapplayout.html' %}
+
+{% load static %}
+{% block body %}
+    <main id="requestpage">
+        <div class="container-fluid px-5 pt-5" >
+            <div class="row">
+
+                <!-- requestside -->
+                <div class=" col-md-7 mb-4">
+                    <div class="request_detail">
+                        <h2 class="mb-3">{{requestdetails.Title}}</h2>
+                        <div id="proofpic">
+                            <img src="{{requestdetails.ProofPic1.url}}" alt="">
+                        </div>
+                        <div id="request_info" class=" ms-lg-5 mt-lg-2 mt-2">
+                            <p ><b><i>{{requestdetails.Username}}</i></b> is organizing this fund raise</p>
+                            <hr>
+                            <p>{{requestdetails.About}}</p>
+                        </div>                        
+                    </div>
+                </div>
+                <!-- donationside -->
+                <div class="col-md-5">
+                    <div class="donation_section">
+                        <div class="top">
+                            <p><span id="big_donation">${{requestdetails.Donation}}</span>raised of ${{requestdetails.Goal}} goal</p>
+                        </div>
+                        <div class="bar">
+                            <div style="width:{{width}}%" class="progress"></div>
+                        </div>
+                        <div class="donate_div" >
+                            <button id="donatebutton" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+                <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class=" text-success modal-title" id="staticBackdropLabel">Info</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        we have two ways you can donate to <b class="text-success">{{requestdetails.Username}}</b>
+                        course <br>
+                        1. you can donate financially <br>
+                        2. donate materially <br>
+                        <br>
+                        when you donate finacially the amount is sent to the benefactor. <br>
+                        But when you donate materially the item is place in Earth's e-commerce site where it can be bought and the amount is sent to the benefactor's account 
+                        <br> 
+                        <button data-id="{{requestdetails.id}}"  id="finacially" class="btn btn-success">Donate finacially</button>
+                        
+                        <button data-id="{{requestdetails.id}}" id="contribute" class="btn btn-success">Donate materially</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'earth/request.js' %}"></script>
+{% endblock %}

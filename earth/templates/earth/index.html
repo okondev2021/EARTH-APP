@@ -1,0 +1,65 @@
+{% extends 'earth/layout1.html' %}
+{% load static %}
+
+{% block script %}
+    <script src="/static/earth/index.js"></script>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div id="index">
+            <div id="index_container" class="container">
+            <div class="row">
+                <div id="title"   class=" col-lg-7">
+                <h1>Join us to fundraise for the people or cause you care about</h1>
+                <button class="btn1 mt-3"><a style="color: white;text-decoration: none" href="{% url 'login' %}">Join Us</a></button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section id="numbers">
+      <div id="number1">
+        <div>
+          <img src="{% static 'earth/images/icon-communities.svg' %}" alt="">
+          <h1>1.4K+</h1>
+        </div>
+        <p>Lives Touched</p>
+      </div>
+      <div id="number2">
+        <div>
+          <img src="{% static 'earth/images/icon-messages.svg' %}" alt="">
+          <h1>2.7m+</h1>
+        </div>
+        <p>Community</p>
+      </div>
+    </section>
+    <footer class="footer">
+        <div class="left">
+            <div class="top">
+                <h1>EARTH</h1>
+                <p class="footer_p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo nesciunt ad modi totam impedit nemo, veritatis esse!</p>
+            </div>
+            <div class="small1">
+                <img src="{% static 'earth/images/icon-phone.svg' %}" alt="">
+                <p>Phone: <a href="tel:07042932301"> 07042932301</a></p>
+            </div>
+            <div class="small2">
+                <img src="{% static 'earth/images/icon-email.svg' %}" alt="">
+                <p><a href="mailto:sojapril16@gmail.com"> sojapril16@gmail.com</a></p>
+            </div>
+        </div>
+        <div  class="right">
+            <h1>NEWSLETTER</h1>
+            <p id="news_p" class="footer_p">To receive tips on how to grow your community.Sign up to our weekly newsleter. We'll never send you spam or pass on your email address</p>
+            <div class="small">
+                <form>
+                    <input autocomplete="off" id="text" type="text" placeholder="jedy_tech@gmail.com">
+                    <span>
+                        <input id="subscribe" type="submit" value="Submit">
+                    </span>
+                </form>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

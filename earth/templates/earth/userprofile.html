@@ -1,0 +1,184 @@
+{% extends 'earth/earthapplayout.html' %}
+
+{% block script %}
+    <script src="/static/earth/profile.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div style="width: 100%;">
+        {% if user_page.username == 'Admin-Earth' %}
+        <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">My Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Welcome, {{request.user}}</li>
+                    </ol>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Pending Requests
+                        </div>
+                        <div class="table-responsive card-body">
+                            <table class="table table-striped table-hover table-success table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col"> Request</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for status in status_false %}
+                                    <tr>
+                                        <td scope="row">{{status.Username.first_name}}</td>
+                                        <td scope="row">{{status.Username.last_name}}</td>
+                                        <td scope="row">{{status.Username.email}}</td>
+                                        <td scope="row"><a class="btn btn-success"  href="{% url 'authrequest' status.id %}">View request</a></td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td scope="row" >No request</td>
+                                        <td scope="row">No request</td>
+                                        <td scope="row">No request</td>
+                                        <td scope="row">No request</td>
+                                    </tr>
+                                    <p>all request have been accepted</p>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+            <!-- DONATOR -->
+        {% else %}
+            {% if user_page.UserType == 'Donor' %}
+                <main class="px-4">
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Welcome, {{request.user}}</li>
+                        </ol>
+                        {% for message in  messages %}
+                        <div style="width: 70%;border-radius:15px;margin-bottom: 0.7em" class="alert alert-info alert-dismissible fade show" role="alert"> {{message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                        </div>
+                        {% endfor %}
+                        <h1 class="text-center pt-4 pt-lg-0" style="text-transform: capitalize ">Support a course you care about</h1>
+                        <div class=" py-4 container-fluid">
+                            <div  class="row">
+                                {% for status in status_true %}
+                                    <div id="request_col" class=" mb-4 col-md-4 p-0">
+                                        <div class=" shadow shadow-md inner">
+                                            <img src="{{status.ProofPic1.url}}" alt="">
+                                            <div style="padding-left: 1em;margin-top: 0.6em">
+                                                <p id="title">{{status.Title}}</p>
+                                                <p id="username">By {{status.Username}}</p>
+                                                <p id="goal">${{status.Goal}} <br> <span><i>Goal</i></span></p>
+                                                <p id="donation">${{status.Donation}} <br> <span> <i>Donation</i></span></p>
+                                            </div>
+                                            <p style="display: flex;justify-content: flex-end"><a style="float: right;;" href="{% url 'requestpage' status.id %}">More info</a></p>
+                                        </div>
+                                    </div>
+                                {% empty %}
+                                    <div class="col-md-4">
+                                            <div class="card mb-4">
+                                                <div class="card-header">
+                                                    <i class="fas fa-chart-area me-1"></i>
+                                                    Info
+                                                </div>
+                                                <div class="card-body">
+                                                    No request
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- RECEIVER -->
+            {% elif  user_page.UserType == 'Donee' %}
+                <main class="px-4">
+                    <div class=" container-fluid">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Welcome, {{request.user}}</li>
+                        </ol>
+                    </div>
+
+                    <p id="progress" class="text-success"></p>
+                    {% for message in  messages %}
+                        <div style="width: 40%; margin: 0 auto;border-radius:15px;margin-bottom: 0.7em" class="m-4 alert alert-info alert-dismissible fade show" role="alert"> {{message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                        </div>
+                    {% endfor %}
+                    {% if checkuserrequest %}
+                        <div style="margin-top: 3em" class="col-lg-4 card">
+                            <div class="card-header">
+                                <h5>Your fundraising has started</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>click on the Check Donation button to see how much you have raised</p>
+                                <button style="display: none" id="make_request" class="btn btn-dark">Delete request</button>
+                            </div>
+                            <div class="card-footer">
+                                <button data-name="{{request.user}}" id="check_request" class="btn btn-dark">Check Donation</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div id="request_card" class="col-lg-4 card">
+                            <div class="card-header">
+                                <h5>Want to stat your fundraise</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5>Instruction:</h5>
+                                You can only make a request once. <br>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa explicabo sequi deserunt necessitatibus iusto! Id voluptates ducimus culpa ullam hic, dolorum fugiat. Placeat quaerat sunt magni suscipit rem, vel facere.
+                                <p>click the button below to begin</p>
+                            </div>
+                            <div class="card-footer">
+                                <button id="make_request" class="btn btn-success">Make request</button>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- start a fundraiser -->
+
+                    <div id="requestform" class="card col-lg-12">
+                        <div class="card-header">
+                            <h5>Let's Begin</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Fill the followng fields</p>
+                            <form action="{% url 'profile' request.user %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class=" mb-3 form-group">
+                                    <input class="form-control" type="text" placeholder="Fundraise Title" name="title">
+                                </div>
+                                <div class=" mb-3 form-group">
+                                    <textarea class="form-control" name="about" cols="30" rows="5" placeholder="Your story"></textarea>
+                                </div>
+                                <div class=" mb-3 form-group">
+                                    <input class="form-control" type="number" name="goal" placeholder="Goal e.g 5000">
+                                </div>
+                                <div class="mb-3 form-group">
+                                    <label class="form-label" for="">Upload first image</label>
+                                    <input  class="form-control" type="file" name="image1">
+                                </div>
+                                <input class="btn btn-dark" id="submit_request" type="submit" value="submit">
+                            </form>
+                        </div>  
+                    </div>
+                </main>  
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
