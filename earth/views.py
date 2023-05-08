@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from .models import User,UserRequest,Create
 
-# Create your views here.
+# Create your views here.z
 
 def index(request):
     status_true = UserRequest.objects.filter(RequestStatus = True)
